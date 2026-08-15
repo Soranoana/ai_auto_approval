@@ -1,0 +1,6 @@
+src/
+out/
+.gitignore
+.vscodeignore
+esbuild.mjs
+tsconfig.json

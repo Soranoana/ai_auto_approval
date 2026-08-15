@@ -1,0 +1,116 @@
+{
+    "name": "ai-approval-guard",
+    "displayName": "AI Approval Guard",
+    "description": "Configure automatic approval for VS Code AI agents with explicit deny rules.",
+    "version": "0.1.0",
+    "publisher": "local",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.100.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "aiApprovalGuard.configure",
+                "title": "AI Approval Guard: Configure Rules"
+            },
+            {
+                "command": "aiApprovalGuard.applyPolicy",
+                "title": "AI Approval Guard: Apply Full Auto Policy"
+            }
+        ],
+        "configuration": {
+            "title": "AI Approval Guard",
+            "properties": {
+                "aiApprovalGuard.enableFullAuto": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable broad automatic approval for Copilot and Claude. Use only in an isolated or trusted workspace."
+                },
+                "aiApprovalGuard.blockedCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "git push --force",
+                        "git reset --hard",
+                        "git clean -fd",
+                        "git checkout -- .",
+                        "git restore .",
+                        "git stash clear",
+                        "git stash drop",
+                        "rm -rf",
+                        "Remove-Item -Recurse -Force",
+                        "terraform destroy",
+                        "kubectl delete"
+                    ],
+                    "description": "Command prefixes that must remain blocked. Matching is case-insensitive."
+                },
+                "aiApprovalGuard.blockedPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "**/.env",
+                        "**/.env.*",
+                        "**/secrets/**",
+                        "**/.ssh/**"
+                    ],
+                    "description": "Path patterns that Claude must not read or edit."
+                },
+                "aiApprovalGuard.blockedTools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "mcp__*"
+                    ],
+                    "description": "Claude tool names to deny. Use mcp__server__tool patterns for MCP tools."
+                },
+                "aiApprovalGuard.blockedDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "Domains that Claude must not access through WebFetch."
+                },
+                "aiApprovalGuard.autoApproveTerminalCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "git status",
+                        "git diff",
+                        "git log",
+                        "npm test",
+                        "npm run test",
+                        "npm run build"
+                    ],
+                    "description": "Copilot terminal command prefixes to approve automatically."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "npm run build",
+        "build": "node ./esbuild.mjs",
+        "watch": "node ./esbuild.mjs --watch",
+        "check-types": "tsc --noEmit",
+        "package": "npm run build && npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/node": "^20.14.15",
+        "@types/vscode": "^1.100.0",
+        "esbuild": "^0.25.0",
+        "typescript": "^5.7.2"
+    }
+}
