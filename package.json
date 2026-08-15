@@ -110,7 +110,9 @@
     "devDependencies": {
         "@types/node": "^20.14.15",
         "@types/vscode": "^1.100.0",
+        "@vscode/vsce": "^3.9.2",
         "esbuild": "^0.25.0",
-        "typescript": "^5.7.2"
+        "typescript": "^5.7.2",
+        "underscore": "^1.13.8"
     }
 }
