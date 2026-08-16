@@ -2,8 +2,8 @@
     "name": "ai-approval-guard",
     "displayName": "AI Approval Guard",
     "description": "Configure automatic approval for VS Code AI agents with explicit deny rules.",
-    "version": "0.1.0",
-    "publisher": "local",
+    "version": "1.0.0",
+    "publisher": "b8ecc622-63ac-448c-9fbc-9a66d79d3b39",
     "license": "MIT",
     "engines": {
         "vscode": "^1.100.0"
