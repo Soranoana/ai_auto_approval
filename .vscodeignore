@@ -1,6 +1,12 @@
 src/
 out/
+node_modules/
+.git/
+.vscode/
+package-lock.json
+*.vsix
 .gitignore
 .vscodeignore
 esbuild.mjs
+media/icon.svg
 tsconfig.json
