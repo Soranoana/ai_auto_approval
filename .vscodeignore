@@ -1,6 +1,8 @@
 src/
 out/
 node_modules/
+node_modules/**
+**/node_modules/**
 .git/
 .vscode/
 package-lock.json

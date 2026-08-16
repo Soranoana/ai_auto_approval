@@ -42,7 +42,7 @@ async function configure(): Promise<void> {
     if (choice?.action === 'apply') {
         await applyPolicy();
     } else if (choice?.action === 'settings') {
-        await vscode.commands.executeCommand('workbench.action.openSettings', '@ext:local.ai-approval-guard');
+        await vscode.commands.executeCommand('workbench.action.openSettings', '@ext:soranoana.ai-approval-guard-soranoana');
     } else if (choice?.action === 'claude') {
         await vscode.commands.executeCommand('workbench.action.openSettingsJson');
     }

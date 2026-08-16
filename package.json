@@ -1,9 +1,9 @@
 {
-    "name": "ai-approval-guard",
-    "displayName": "AI Approval Guard",
+    "name": "ai-approval-guard-soranoana",
+    "displayName": "AI Approval Guard - Soranoana",
     "description": "Configure automatic approval for VS Code AI agents with explicit deny rules.",
     "version": "1.0.0",
-    "publisher": "b8ecc622-63ac-448c-9fbc-9a66d79d3b39",
+    "publisher": "soranoana",
     "license": "MIT",
     "icon": "media/icon.png",
     "engines": {
